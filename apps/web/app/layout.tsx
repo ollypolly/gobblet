@@ -1,3 +1,6 @@
+import React from "react";
+import { CssBaseline } from "@mui/material";
+
 export default function RootLayout({
   children,
 }: {
@@ -5,6 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <CssBaseline />
       <body>{children}</body>
     </html>
   );
