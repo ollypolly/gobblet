@@ -1,81 +1,78 @@
-# Turborepo starter
+# What is Gobblet?
 
-This is an official starter Turborepo.
+[Play Gobblet](https://gobblet.olly.live)
 
-## Using this example
+Gobblet is an abstract game played on a 4x4 grid with each of the two players having twelve pieces that can nest on top of one another to create three stacks of four pieces.
 
-Run the following command:
+View more information on [BoardGameGeek](https://boardgamegeek.com/boardgame/2266/gobblet).
 
-```sh
-npx create-turbo@latest
-```
+# Tech Stack
 
-## What's inside?
+## Monorepo
 
-This Turborepo includes the following packages/apps:
+We use a Turborepo monorepo containing both the frontend, backend, and any shared models.
 
-### Apps and Packages
+## apps/web - Gobblet frontend
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+Next.js, Typescript, Redux Toolkit, React DnD
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## apps/api - Gobblet backend
 
-### Utilities
+[TBD]
 
-This Turborepo has some additional tools already setup for you:
+# Roadmap
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## MVP
 
-### Build
+- React DND Board component
+- Redux toolkit state and game logic
+- Real-time pub/sub of moves using ably
+- AI opponent
 
-To build all apps and packages, run the following command:
+## Stretch Goals
 
-```
-cd my-turborepo
-pnpm build
-```
+- Account system
+- Multiplayer
+- three.js and gsap animation lib, convert board and pieces into 3d models with animations.
+- Rating system
+- Chat system
+- Move replays
 
-### Develop
+# Game Model
 
-To develop all apps and packages, run the following command:
+## Board
 
-```
-cd my-turborepo
-pnpm dev
-```
+ob = "off-board"
+ob1, ob2, ob3 belong to Player 1, ob4, ob5, ob6 belong to Player 2.
 
-### Remote Caching
+ob1 ob2 ob3
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+a1 b1 c1 d1
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+a2 b2 c2 d2
 
-```
-cd my-turborepo
-npx turbo login
-```
+a3 b3 c3 d3
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+a4 b4 c4 d4
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+ob4 ob5 ob6
 
-```
-npx turbo link
-```
+## Pieces
 
-## Useful Links
+Each piece would have three properties:
 
-Learn more about the power of Turborepo:
+- size: denotes the order the pieces can be stacked (0 - 3)
+- colour: 0/1 (player 1 or player 2)
+- space: the board square it currently occupies (ob1, c4, etc)
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Moves
+
+Various validation must take place on moving a piece:
+
+- A move attempts to change a pieces space property to the current hovered square, and validation takes place if the size of the current piece in the square <= to size of the piece moving then it rejects it
+- Move a piece from ob to a location that must not have a piece on it already, you cannot gobble from off the board
+- Must be "touch a piece, move a piece", as it reveals the underlying goblet
+
+## Win condition
+
+A game is won when one player has a line of 4 pieces in a row, be it diagonally, horizontally, or vertically. A win can be revealed by the opposing player, so a move must be started on drag.
