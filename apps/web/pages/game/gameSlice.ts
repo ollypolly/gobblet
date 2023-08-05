@@ -1,3 +1,5 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 type PieceSize = 0 | 1 | 2 | 3;
 
 type Player = 0 | 1;
@@ -65,3 +67,22 @@ export const initialState: GameState = {
   currentPlayer: 0,
   winner: null,
 };
+
+export const gameSlice = createSlice({
+  name: "game",
+  initialState,
+  reducers: {
+    movePiece: (
+      state,
+      action: PayloadAction<{ piece: Piece; space: BoardSpaces }>
+    ) => {
+      const { piece, space } = action.payload;
+      const pieceIndex = state.board.findIndex((p) => p === piece);
+      state.board[pieceIndex].space = space;
+    },
+  },
+});
+
+export const { movePiece } = gameSlice.actions;
+
+export default gameSlice.reducer;
