@@ -1,10 +1,28 @@
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import logo from "../../../img/logo.png";
 
 export const Header = () => {
   return (
-    <Box component="header">
+    <Box
+      component="header"
+      sx={{
+        height: "60px",
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 40px",
+        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(91, 133, 205, 0.25)",
+
+        img: {
+          height: "100%",
+          width: "auto",
+        },
+      }}
+    >
       <img src={logo.src} alt="Gobblet Logo" />
+      <IconButton></IconButton>
     </Box>
   );
 };

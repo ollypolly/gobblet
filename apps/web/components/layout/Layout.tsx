@@ -12,13 +12,19 @@ export const Layout = ({ children }: LayoutProps) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        background: "linear-gradient(45deg, #3244ca 30%, #171ea4 90%)",
+        height: "100svh",
+        width: "100svw",
       }}
     >
       <Header />
       <Box
         component="main"
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           flexGrow: 1,
         }}
       >

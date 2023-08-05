@@ -6,10 +6,17 @@ export default function Page() {
   return (
     <CenterBox
       sx={{
-        background: "linear-gradient(45deg, #3244ca 30%, #171ea4 90%)",
-        height: "100svh",
-        width: "100svw",
+        height: "500px",
+        width: "500px",
+        backgroundColor: "rgba(255, 255, 255, 0.25)",
+        borderRadius: "10px",
+        border: "1px solid rgba(255, 255, 255, 0.25)",
+        color: "white",
+        fontWeight: "bold",
+        filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
       }}
-    ></CenterBox>
+    >
+      Board Placeholder
+    </CenterBox>
   );
 }
