@@ -1,9 +1,9 @@
+import { CssBaseline } from "@mui/material";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
-import { CssBaseline } from "@mui/material";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <CssBaseline />
@@ -11,5 +11,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Provider>
   );
 }
-
-export default MyApp;

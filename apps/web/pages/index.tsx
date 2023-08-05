@@ -1,4 +1,4 @@
-import logo from "./img/logo.png";
+import logo from "../img/logo.png";
 import { Typography, Box } from "@mui/material";
 
 export default function Page() {
