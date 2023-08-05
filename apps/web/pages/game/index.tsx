@@ -1,43 +1,33 @@
-import { CenterBox } from "../../components";
+import { CenterBox } from "../../components/flexCenter/FlexCenter";
 import logo from "../../img/logo.png";
 import { Typography, Box } from "@mui/material";
 
 export default function Page() {
   return (
-    <CenterBox
+    <Box
       sx={{
-        background: "linear-gradient(45deg, #3244ca 30%, #171ea4 90%)",
-        height: "100svh",
-        width: "100svw",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        overflowX: "auto",
       }}
     >
-      <Box
+      <CenterBox
         sx={{
-          flexDirection: "column",
-          justifyContent: "center",
-          textAlign: "center",
-          maxWidth: "500px",
-          margin: "auto",
-          padding: "1rem",
-
-          img: {
-            width: "100%",
-          },
+          height: ["300px", "600px", "800px"],
+          width: ["300px", "600px", "800px"],
+          backgroundColor: "rgba(255, 255, 255, 0.25)",
+          borderRadius: "10px",
+          border: "1px solid rgba(255, 255, 255, 0.25)",
+          color: "white",
+          fontWeight: "bold",
+          filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
         }}
       >
-        <img src={logo.src} alt="Gobblet Logo" />
-        <Typography
-          sx={{
-            color: "white",
-            fontWeight: "bold",
-            fontSize: ["1rem", "2rem"],
-            marginTop: "1rem",
-          }}
-          variant="body1"
-        >
-          Coming Soon
-        </Typography>
-      </Box>
-    </CenterBox>
+        Board Placeholder
+      </CenterBox>
+    </Box>
   );
 }
