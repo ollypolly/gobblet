@@ -1,4 +1,4 @@
-import { CenterBox } from "../../components";
+import { CenterBox } from "../../components/flexCenter/FlexCenter";
 import logo from "../../img/logo.png";
 import { Typography, Box } from "@mui/material";
 
@@ -10,34 +10,6 @@ export default function Page() {
         height: "100svh",
         width: "100svw",
       }}
-    >
-      <Box
-        sx={{
-          flexDirection: "column",
-          justifyContent: "center",
-          textAlign: "center",
-          maxWidth: "500px",
-          margin: "auto",
-          padding: "1rem",
-
-          img: {
-            width: "100%",
-          },
-        }}
-      >
-        <img src={logo.src} alt="Gobblet Logo" />
-        <Typography
-          sx={{
-            color: "white",
-            fontWeight: "bold",
-            fontSize: ["1rem", "2rem"],
-            marginTop: "1rem",
-          }}
-          variant="body1"
-        >
-          Coming Soon
-        </Typography>
-      </Box>
-    </CenterBox>
+    ></CenterBox>
   );
 }
