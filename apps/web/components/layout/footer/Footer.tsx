@@ -9,7 +9,6 @@ export const Footer = () => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        color: "white",
         alignItems: "center",
         padding: "10px 40px",
         backdropFilter: "blur(10px)",
