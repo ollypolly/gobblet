@@ -16,7 +16,7 @@ export const Footer = () => {
         backgroundColor: "rgba(91, 133, 205, 0.25)",
       }}
     >
-      Footer
+      Made by @ollypolly & @owenpearson
     </Box>
   );
 };

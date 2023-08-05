@@ -21,16 +21,11 @@ export const Layout = ({ children }: LayoutProps) => {
       <Box
         component="main"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           flexGrow: 1,
         }}
       >
         {children}
       </Box>
-
       <Footer />
     </Box>
   );

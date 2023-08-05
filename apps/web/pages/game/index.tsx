@@ -4,19 +4,30 @@ import { Typography, Box } from "@mui/material";
 
 export default function Page() {
   return (
-    <CenterBox
+    <Box
       sx={{
-        height: "500px",
-        width: "500px",
-        backgroundColor: "rgba(255, 255, 255, 0.25)",
-        borderRadius: "10px",
-        border: "1px solid rgba(255, 255, 255, 0.25)",
-        color: "white",
-        fontWeight: "bold",
-        filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        overflowX: "auto",
       }}
     >
-      Board Placeholder
-    </CenterBox>
+      <CenterBox
+        sx={{
+          height: ["300px", "600px", "800px"],
+          width: ["300px", "600px", "800px"],
+          backgroundColor: "rgba(255, 255, 255, 0.25)",
+          borderRadius: "10px",
+          border: "1px solid rgba(255, 255, 255, 0.25)",
+          color: "white",
+          fontWeight: "bold",
+          filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
+        }}
+      >
+        Board Placeholder
+      </CenterBox>
+    </Box>
   );
 }

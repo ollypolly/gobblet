@@ -1,5 +1,6 @@
 import { Box, IconButton } from "@mui/material";
 import logo from "../../../img/logo.png";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export const Header = () => {
   return (
@@ -22,7 +23,13 @@ export const Header = () => {
       }}
     >
       <img src={logo.src} alt="Gobblet Logo" />
-      <IconButton></IconButton>
+      <IconButton
+        sx={{
+          color: "white",
+        }}
+      >
+        <LightModeIcon />
+      </IconButton>
     </Box>
   );
 };
