@@ -1,8 +1,14 @@
 import { Box, IconButton } from "@mui/material";
 import logo from "../../../img/logo.png";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useAppDispatch } from "../../../store/hooks";
+import { toggleTheme as storeToggleTheme } from "../../../theme/themeSlice";
 
 export const Header = () => {
+  const dispatch = useAppDispatch();
+  const toggleTheme = () => {
+    dispatch(storeToggleTheme());
+  };
   return (
     <Box
       component="header"
@@ -23,11 +29,7 @@ export const Header = () => {
       }}
     >
       <img src={logo.src} alt="Gobblet Logo" />
-      <IconButton
-        sx={{
-          color: "white",
-        }}
-      >
+      <IconButton onClick={toggleTheme}>
         <LightModeIcon />
       </IconButton>
     </Box>

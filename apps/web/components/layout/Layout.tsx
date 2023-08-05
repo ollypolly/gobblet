@@ -12,7 +12,6 @@ export const Layout = ({ children }: LayoutProps) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        background: "linear-gradient(45deg, #3244ca 30%, #171ea4 90%)",
         height: "100svh",
         width: "100svw",
       }}

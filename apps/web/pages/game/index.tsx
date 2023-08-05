@@ -16,12 +16,11 @@ export default function Page() {
     >
       <CenterBox
         sx={{
-          height: ["300px", "600px", "800px"],
-          width: ["300px", "600px", "800px"],
+          height: ["400px", "600px", "800px"],
+          width: ["400px", "600px", "800px"],
           backgroundColor: "rgba(255, 255, 255, 0.25)",
           borderRadius: "10px",
           border: "1px solid rgba(255, 255, 255, 0.25)",
-          color: "white",
           fontWeight: "bold",
           filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
         }}
