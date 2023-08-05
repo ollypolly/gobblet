@@ -1,8 +1,13 @@
 import { CenterBox } from "../../components/flexCenter/FlexCenter";
 import logo from "../../img/logo.png";
 import { Typography, Box } from "@mui/material";
+import { Board } from "./components/board/Board";
+import { useAppSelector } from "../../store/hooks";
+import { selectState } from "./gameSlice";
 
 export default function Page() {
+  const state = useAppSelector(selectState);
+
   return (
     <Box
       sx={{
@@ -14,19 +19,7 @@ export default function Page() {
         overflowX: "auto",
       }}
     >
-      <CenterBox
-        sx={{
-          height: ["400px", "600px", "800px"],
-          width: ["400px", "600px", "800px"],
-          backgroundColor: "rgba(255, 255, 255, 0.25)",
-          borderRadius: "10px",
-          border: "1px solid rgba(255, 255, 255, 0.25)",
-          fontWeight: "bold",
-          filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))",
-        }}
-      >
-        Board Placeholder
-      </CenterBox>
+      <Board state={state.board} />
     </Box>
   );
 }

@@ -114,3 +114,5 @@ export const gameSlice = createSlice({
 export const { movePiece } = gameSlice.actions;
 
 export default gameSlice.reducer;
+
+export const selectState = (state: { game: GameState }) => state.game;
