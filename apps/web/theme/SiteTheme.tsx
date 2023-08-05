@@ -5,7 +5,11 @@ import { lightTheme } from "./themes/lightTheme";
 import { useAppSelector } from "../store/hooks";
 import { selectIsDarkTheme } from "./themeSlice";
 
-export const SiteTheme = ({ children }) => {
+type SiteThemeProps = {
+  children: React.ReactNode;
+};
+
+export const SiteTheme = ({ children }: SiteThemeProps) => {
   const isDarkMode = useAppSelector(selectIsDarkTheme);
   const theme = isDarkMode ? darkTheme : lightTheme;
 
