@@ -1,13 +1,11 @@
-import logo from "./img/logo.png";
+import { CenterBox } from "../../components";
+import logo from "../../img/logo.png";
 import { Typography, Box } from "@mui/material";
 
 export default function Page() {
   return (
-    <Box
+    <CenterBox
       sx={{
-        display: "flex",
-        justifyContent: "column",
-        alignItems: "center",
         background: "linear-gradient(45deg, #3244ca 30%, #171ea4 90%)",
         height: "100svh",
         width: "100svw",
@@ -40,6 +38,6 @@ export default function Page() {
           Coming Soon
         </Typography>
       </Box>
-    </Box>
+    </CenterBox>
   );
 }
