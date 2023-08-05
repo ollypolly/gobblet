@@ -35,6 +35,7 @@ export type GameState = {
   board: Piece[];
   currentPlayer: Player;
   winner: Player | null;
+  moveCount: number;
 };
 
 export const initialState: GameState = {
@@ -66,19 +67,46 @@ export const initialState: GameState = {
   ],
   currentPlayer: 0,
   winner: null,
+  moveCount: 0,
 };
 
 export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    startMove: (state, action: PayloadAction<Piece>) => {
+      const { size, player, space } = action.payload;
+      const pieceIndex = state.board.findIndex((p) => p === action.payload);
+
+      // TODO Analyse game board to check for win condition
+    },
     movePiece: (
       state,
       action: PayloadAction<{ piece: Piece; space: BoardSpaces }>
     ) => {
       const { piece, space } = action.payload;
       const pieceIndex = state.board.findIndex((p) => p === piece);
+      const pieceInSpace = state.board.find((p) => p.space === space);
+      const fromOffBoard = piece.space.startsWith("ob");
+
+      // Check if piece is already in space
+      if (piece.space === space) {
+        return;
+      }
+
+      // Compare piece sizes
+      if (pieceInSpace && pieceInSpace.size >= piece.size) {
+        return;
+      }
+
+      // Check if piece is gobbled from off board
+      if (fromOffBoard && !!pieceInSpace) {
+        return;
+      }
+
       state.board[pieceIndex].space = space;
+      state.moveCount++;
+      state.currentPlayer = state.currentPlayer === 0 ? 1 : 0;
     },
   },
 });
