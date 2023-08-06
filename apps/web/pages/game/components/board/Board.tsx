@@ -1,26 +1,24 @@
 import { CenterBox } from "../../../../components/flexCenter/FlexCenter";
 import { Piece } from "../piece/Piece";
-import { BoardSpaces, Piece as PieceType } from "../../gameSlice";
+import { BoardSpace, Piece as PieceType } from "../../gameSlice";
 import { Square } from "../square/Square";
 
 type BoardProps = {
   state: PieceType[];
 };
 
-type Coord = {
-  x: number;
-  y: number;
-};
+function renderSquare(space: BoardSpace, pieceSpace?: BoardSpace) {
+  const isPieceHere = space === pieceSpace;
+  const piece = isPieceHere ? <Piece /> : space;
 
-function renderSquare(squareCoord: Coord, pieceCoord: Coord) {
-  const isPieceHere =
-    pieceCoord.x === squareCoord.x && pieceCoord.y === squareCoord.y;
-  const piece = isPieceHere ? <Piece /> : null;
-
-  return <Square>{piece}</Square>;
+  return (
+    <Square id={space} key={space}>
+      {piece}
+    </Square>
+  );
 }
 
-const squares: BoardSpaces[] = [
+const spaces: BoardSpace[] = [
   "ob1",
   "ob2",
   "ob3",
@@ -45,15 +43,6 @@ const squares: BoardSpaces[] = [
   "ob6",
 ];
 
-const spaceToCoord = (space: BoardSpaces | undefined) => {
-  if (!space) return { x: -1, y: -1 };
-
-  const x = space[0] === "o" ? 0 : 1;
-  const y = parseInt(space[1]) - 1;
-
-  return { x, y };
-};
-
 export const Board = ({ state }: BoardProps) => {
   return (
     <CenterBox
@@ -70,20 +59,14 @@ export const Board = ({ state }: BoardProps) => {
         gridTemplateColumns: "repeat(4, 1fr)",
       }}
     >
-      {squares.map((square, i) => {
-        if (square.startsWith("ob")) {
+      {spaces.map((space) => {
+        if (space.startsWith("ob")) {
           return null;
         }
 
-        const squareCoord = {
-          x: i % 2 === 0 ? 0 : 1,
-          y: Math.floor(i / 2),
-        };
-        const pieceCoord = spaceToCoord(
-          state.find((piece) => piece.space === square)?.space
-        );
+        const pieceSpace = state.find((piece) => piece.space === space)?.space;
 
-        return renderSquare(squareCoord, pieceCoord);
+        return renderSquare(space, pieceSpace);
       })}
     </CenterBox>
   );

@@ -4,8 +4,8 @@ type PieceSize = 0 | 1 | 2 | 3;
 
 type Player = 0 | 1;
 
-type OffBoardSpaces = "ob1" | "ob2" | "ob3" | "ob4" | "ob5" | "ob6";
-type OnBoardSpaces =
+type OffBoardSpace = "ob1" | "ob2" | "ob3" | "ob4" | "ob5" | "ob6";
+type OnBoardSpace =
   | "a1"
   | "a2"
   | "a3"
@@ -23,12 +23,12 @@ type OnBoardSpaces =
   | "d3"
   | "d4";
 
-export type BoardSpaces = OffBoardSpaces | OnBoardSpaces;
+export type BoardSpace = OffBoardSpace | OnBoardSpace;
 
 export type Piece = {
   size: PieceSize;
   player: Player;
-  space: BoardSpaces;
+  space: BoardSpace;
 };
 
 export type GameState = {
@@ -82,7 +82,7 @@ export const gameSlice = createSlice({
     },
     movePiece: (
       state,
-      action: PayloadAction<{ piece: Piece; space: BoardSpaces }>
+      action: PayloadAction<{ piece: Piece; space: BoardSpace }>
     ) => {
       const { piece, space } = action.payload;
       const pieceIndex = state.board.findIndex((p) => p === piece);
