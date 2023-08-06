@@ -10,7 +10,7 @@ export const Square = ({ children }: SquareProps) => {
       sx={{
         width: "100%",
         height: "100%",
-        backgroundColor: "green",
+        border: "1px solid rgba(255, 255, 255, 0.25)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
